@@ -27,14 +27,17 @@ body {
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.06);
 }
 
-/* Desktop: wide enough for the three buckets to sit side by side as columns
-   (see page.module.css / WishlistBucket.module.css) instead of staying phone-width. The shell is
-   pinned to the viewport height and becomes a column flex container so the header and wishlist
-   title never scroll away — only each bucket's own item list scrolls, internally
-   (WishlistBucket.module.css). */
+/* Desktop: the three buckets sit side by side as columns instead of stacked/collapsible
+   (see page.module.css / WishlistBucket.module.css), and the shell fills the full browser width —
+   no fixed max-width, no centred grey gutters either side; page.module.css's .header/.buckets add
+   their own ~32px side padding instead. The shell is also pinned to the viewport height and
+   becomes a column flex container so the header and wishlist title never scroll away — only each
+   bucket's own item list scrolls, internally (WishlistBucket.module.css). */
 @media (min-width: 900px) {
   .app-shell {
-    max-width: 960px;
+    max-width: none;
+    width: 100%;
+    margin: 0;
     height: 100vh;
     overflow: hidden;
     display: flex;
