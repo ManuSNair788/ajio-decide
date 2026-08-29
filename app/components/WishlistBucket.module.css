@@ -70,17 +70,54 @@
   display: flex;
 }
 
-/* Desktop: three columns, everything always visible, no collapsing. */
+/* Desktop: three columns, everything always visible, no collapsing. Each column fills its grid
+   row's stretched height (page.module.css's .buckets) and becomes its own column flex layout: the
+   heading stays fixed-size, and only the item list below it scrolls, independently per column, so
+   the page itself never needs to scroll. */
 @media (min-width: 900px) {
+  .bucket {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .titleButton {
+    flex: 0 0 auto;
+  }
+
   .chevron {
     display: none;
   }
 
   .empty {
     display: block;
+    flex: 1 1 auto;
   }
 
   .list {
     display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+
+  /* Subtle scrollbar, just enough to signal "more below" without drawing attention to itself. */
+  .list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(166, 25, 46, 0.35) transparent;
+  }
+
+  .list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .list::-webkit-scrollbar-thumb {
+    background-color: rgba(166, 25, 46, 0.35);
+    border-radius: 999px;
   }
 }

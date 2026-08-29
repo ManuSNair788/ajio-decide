@@ -21,12 +21,23 @@
   gap: 24px;
 }
 
-/* Desktop: three buckets side by side as columns instead of stacked/collapsible. */
+/* Desktop: three buckets side by side as columns instead of stacked/collapsible. .header stays a
+   fixed-size flex item (never scrolls); .buckets fills the rest of the viewport height and
+   stretches each column to match, so a column's own item list is what scrolls internally
+   (WishlistBucket.module.css), not the page. */
 @media (min-width: 900px) {
+  .header {
+    flex: 0 0 auto;
+  }
+
   .buckets {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    align-items: start;
+    align-items: stretch;
     gap: 20px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    padding-bottom: 16px;
   }
 }
