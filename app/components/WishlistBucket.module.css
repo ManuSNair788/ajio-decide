@@ -1,0 +1,33 @@
+.bucket {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.count {
+  font-weight: 400;
+  color: #888;
+  font-size: 13px;
+}
+
+.empty {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

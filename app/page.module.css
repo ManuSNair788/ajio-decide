@@ -1,0 +1,21 @@
+.header {
+  padding: 20px 16px 8px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 20px;
+}
+
+.subheading {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.buckets {
+  padding: 0 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
