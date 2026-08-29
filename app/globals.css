@@ -27,6 +27,14 @@ body {
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.06);
 }
 
+/* Desktop: wide enough for the three buckets to sit side by side as columns
+   (see page.module.css / WishlistBucket.module.css) instead of staying phone-width. */
+@media (min-width: 900px) {
+  .app-shell {
+    max-width: 960px;
+  }
+}
+
 .app-header {
   background: var(--accent);
   color: #ffffff;

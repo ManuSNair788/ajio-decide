@@ -4,6 +4,22 @@
   gap: 12px;
 }
 
+.titleButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
 .title {
   margin: 0;
   font-size: 15px;
@@ -20,15 +36,51 @@
   font-size: 13px;
 }
 
+.chevron {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--accent);
+  transform: rotate(-90deg);
+  transition: transform 0.15s ease;
+}
+
+.chevronOpen {
+  transform: rotate(0deg);
+}
+
 .empty {
+  display: none;
   margin: 0;
   font-size: 13px;
   color: #999;
   font-style: italic;
 }
 
+.empty.expanded {
+  display: block;
+}
+
 .list {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 12px;
+}
+
+.list.expanded {
+  display: flex;
+}
+
+/* Desktop: three columns, everything always visible, no collapsing. */
+@media (min-width: 900px) {
+  .chevron {
+    display: none;
+  }
+
+  .empty {
+    display: block;
+  }
+
+  .list {
+    display: flex;
+  }
 }

@@ -33,7 +33,12 @@ export default function Home() {
       </header>
       <div className={styles.buckets}>
         {BUCKET_ORDER.map((bucket) => (
-          <WishlistBucket key={bucket} title={bucket} entries={bucketed[bucket]} />
+          <WishlistBucket
+            key={bucket}
+            title={bucket}
+            entries={bucketed[bucket]}
+            defaultExpanded={bucket === "Needs a decision"}
+          />
         ))}
       </div>
     </main>
