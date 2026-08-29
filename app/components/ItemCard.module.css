@@ -9,6 +9,27 @@
   flex-wrap: wrap;
 }
 
+.thumb,
+.thumbFallback {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background: #eeeeee;
+}
+
+.thumb {
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .thumb,
+  .thumbFallback {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .info {
   min-width: 0;
   flex: 1 1 auto;

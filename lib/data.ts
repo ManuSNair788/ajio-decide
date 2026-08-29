@@ -7,6 +7,7 @@ export type Product = {
   name: string
   brand: string
   category: string
+  image_url: string
   size_range: string[]
   fabric: string
   formality: "casual" | "workwear" | "festive" | "formal"
@@ -48,6 +49,7 @@ function assertProduct(p: unknown, index: number): asserts p is Product {
   if (typeof r.name !== "string") throw new Error(`products.json[${index}]: missing name`)
   if (typeof r.brand !== "string") throw new Error(`products.json[${index}]: missing brand`)
   if (typeof r.category !== "string") throw new Error(`products.json[${index}]: missing category`)
+  if (typeof r.image_url !== "string") throw new Error(`products.json[${index}]: missing image_url`)
   if (!Array.isArray(r.size_range)) throw new Error(`products.json[${index}]: missing size_range`)
   if (typeof r.fabric !== "string") throw new Error(`products.json[${index}]: missing fabric`)
   if (!FORMALITIES.includes(r.formality as string))

@@ -37,6 +37,7 @@ async function callDecide(wishlistItemId: string, answer?: string): Promise<Deci
 
 export default function ItemCard({ item, product }: Props) {
   const [state, setState] = useState<RequestState>({ status: "idle" })
+  const [imageFailed, setImageFailed] = useState(false)
 
   async function handleHelpMeDecide() {
     setState({ status: "loading" })
@@ -69,6 +70,16 @@ export default function ItemCard({ item, product }: Props) {
 
   return (
     <article className={styles.card}>
+      {imageFailed ? (
+        <div className={styles.thumbFallback} aria-hidden="true" />
+      ) : (
+        <img
+          src={product.image_url}
+          alt={product.name}
+          className={styles.thumb}
+          onError={() => setImageFailed(true)}
+        />
+      )}
       <div className={styles.info}>
         <p className={styles.name}>{product.name}</p>
         <p className={styles.brand}>{product.brand}</p>
