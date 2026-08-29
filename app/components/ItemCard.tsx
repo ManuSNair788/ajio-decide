@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import type { Product, WishlistItem } from "@/lib/data"
-import type { DecideResponse } from "@/lib/doubtResolution"
+import type { DecideResponse, DecisionCard as DecisionCardType } from "@/lib/doubtResolution"
+import ClarifyingQuestion from "./ClarifyingQuestion"
 import DecisionCard from "./DecisionCard"
 import styles from "./ItemCard.module.css"
 
@@ -11,49 +12,58 @@ type Props = {
   product: Product
 }
 
-type RequestState = { status: "idle" } | { status: "loading" } | { status: "done"; response: DecideResponse }
+type RequestState =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "needs_input"; question: string }
+  | { status: "answering"; question: string }
+  | { status: "decided"; card: DecisionCardType }
 
-const NOT_WIRED_YET: DecideResponse = {
-  status: "decided",
-  card: {
-    verdict: "park_it",
-    headline: "Not wired up yet",
-    reasoning: "This doubt type is coming in a later phase.",
-    confidence: "low",
-  },
+const REQUEST_FAILED_CARD: DecisionCardType = {
+  verdict: "park_it",
+  headline: "Couldn't reach a verdict right now",
+  reasoning: "The decision service is temporarily unavailable — please try again.",
+  confidence: "low",
 }
 
-const REQUEST_FAILED: DecideResponse = {
-  status: "decided",
-  card: {
-    verdict: "park_it",
-    headline: "Couldn't reach a verdict right now",
-    reasoning: "The decision service is temporarily unavailable — please try again.",
-    confidence: "low",
-  },
+async function callDecide(wishlistItemId: string, answer?: string): Promise<DecideResponse> {
+  const res = await fetch("/api/decide", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(answer === undefined ? { wishlistItemId } : { wishlistItemId, answer }),
+  })
+  return (await res.json()) as DecideResponse
 }
 
 export default function ItemCard({ item, product }: Props) {
   const [state, setState] = useState<RequestState>({ status: "idle" })
-  const wired = item.doubt_type === "fit"
 
   async function handleHelpMeDecide() {
-    if (!wired) {
-      setState({ status: "done", response: NOT_WIRED_YET })
-      return
-    }
-
     setState({ status: "loading" })
     try {
-      const res = await fetch("/api/decide", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ wishlistItemId: item.id }),
-      })
-      const data = (await res.json()) as DecideResponse
-      setState({ status: "done", response: data })
+      const data = await callDecide(item.id)
+      setState(
+        data.status === "needs_input"
+          ? { status: "needs_input", question: data.question }
+          : { status: "decided", card: data.card },
+      )
     } catch {
-      setState({ status: "done", response: REQUEST_FAILED })
+      setState({ status: "decided", card: REQUEST_FAILED_CARD })
+    }
+  }
+
+  async function handleAnswerSubmit(answer: string) {
+    if (state.status !== "needs_input") return
+    setState({ status: "answering", question: state.question })
+    try {
+      const data = await callDecide(item.id, answer)
+      setState(
+        data.status === "needs_input"
+          ? { status: "needs_input", question: data.question }
+          : { status: "decided", card: data.card },
+      )
+    } catch {
+      setState({ status: "decided", card: REQUEST_FAILED_CARD })
     }
   }
 
@@ -64,20 +74,27 @@ export default function ItemCard({ item, product }: Props) {
         <p className={styles.brand}>{product.brand}</p>
         <p className={styles.price}>₹{product.price.toLocaleString("en-IN")}</p>
       </div>
-      <button
-        type="button"
-        className={styles.button}
-        onClick={handleHelpMeDecide}
-        disabled={state.status === "loading"}
-      >
-        {state.status === "loading" ? "Thinking…" : "Help me decide"}
-      </button>
-      {state.status === "done" && state.response.status === "decided" && (
-        <DecisionCard card={state.response.card} />
+
+      {(state.status === "idle" || state.status === "loading") && (
+        <button
+          type="button"
+          className={styles.button}
+          onClick={handleHelpMeDecide}
+          disabled={state.status === "loading"}
+        >
+          {state.status === "loading" ? "Thinking…" : "Help me decide"}
+        </button>
       )}
-      {state.status === "done" && state.response.status === "needs_input" && (
-        <p className={styles.stubNote}>{state.response.question}</p>
+
+      {(state.status === "needs_input" || state.status === "answering") && (
+        <ClarifyingQuestion
+          question={state.question}
+          submitting={state.status === "answering"}
+          onSubmit={handleAnswerSubmit}
+        />
       )}
+
+      {state.status === "decided" && <DecisionCard card={state.card} />}
     </article>
   )
 }

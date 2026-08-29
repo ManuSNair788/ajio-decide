@@ -35,6 +35,7 @@ export async function POST(request: Request): Promise<Response> {
     if (typeof wishlistItemId !== "string") {
       return NextResponse.json(GRACEFUL_FAILURE)
     }
+    const answer = typeof body?.answer === "string" ? body.answer : undefined
 
     const item = getWishlistItem(wishlistItemId)
     if (!item) {
@@ -47,13 +48,7 @@ export async function POST(request: Request): Promise<Response> {
       return NextResponse.json(GRACEFUL_FAILURE)
     }
 
-    // Phase 8 only wires "fit" end to end; other doubt types stay client-side-stubbed until
-    // Phase 9 adds their prompt builders, so this route never sees them yet.
-    if (item.doubt_type !== "fit") {
-      return NextResponse.json(GRACEFUL_FAILURE)
-    }
-
-    const prompt = buildPrompt(item, product, user)
+    const prompt = buildPrompt(item, product, user, answer)
     const result = await callSynthesis(prompt)
     if (!result.ok) {
       return NextResponse.json(GRACEFUL_FAILURE)

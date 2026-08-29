@@ -1,0 +1,44 @@
+.form {
+  flex-basis: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.question {
+  margin: 0;
+  font-size: 13px;
+  color: #333;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.submit {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  background: #999999;
+  cursor: default;
+}

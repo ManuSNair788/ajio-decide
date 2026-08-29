@@ -80,20 +80,104 @@ function buildFitPrompt(item: WishlistItem, product: Product, user: User): strin
   return `${facts}\n\n${RESPONSE_SHAPE_INSTRUCTION}`
 }
 
-type PromptBuilder = (item: WishlistItem, product: Product, user: User) => string
+function buildQualityPrompt(item: WishlistItem, product: Product, user: User, answer?: string): string {
+  // The seeded fact (ARCHITECTURE.md §3.3) if present; otherwise the answer just submitted for
+  // the needs_input round trip (§3.5) — either way, this is the one fact only the user can supply.
+  const expectedFeel = item.expected_fabric_feel ?? answer
 
-// Phase 8 wires only "fit" end to end; ARCHITECTURE.md §3.5's quality/returns_risk rows are
-// built in Phase 9.
-const PROMPT_BUILDERS: Partial<Record<DoubtType, PromptBuilder>> = {
-  fit: buildFitPrompt,
+  const reviewLines = product.reviews.map((r) => `- "${r}"`).join("\n")
+
+  const facts = [
+    `DOUBT TYPE: quality — the user is unsure whether the fabric and construction will match what`,
+    `they expect.`,
+    ``,
+    `PRODUCT FACTS:`,
+    `- Name: "${product.name}"`,
+    `- Brand: ${product.brand}`,
+    `- Catalog fabric: ${product.fabric}`,
+    ``,
+    `PUBLIC REVIEWS MENTIONING FABRIC/CONSTRUCTION FOR THIS PRODUCT:`,
+    reviewLines,
+    ``,
+    `THIS USER'S OWN STATED EXPECTATION FOR THE FABRIC:`,
+    expectedFeel
+      ? `- "${expectedFeel}"`
+      : `- (missing — the user has not said what they expect the fabric to feel or perform like)`,
+    ``,
+    expectedFeel
+      ? [
+          `INSTRUCTION FOR THIS DOUBT TYPE: the user's stated expectation is given above and is final —`,
+          `you must respond with the "decided" state in this call, not "needs_input", even if the`,
+          `expectation is vague, qualitative, or imprecise (e.g. no GSM or fabric-technical detail). Do`,
+          `not ask any follow-up question about it under any circumstance. Compare it against the`,
+          `catalog fabric and what the reviews describe. In the "reasoning" field, quote or closely`,
+          `paraphrase the user's stated expectation and name the specific fabric fact or review line`,
+          `you are comparing it against — a generic answer that doesn't cite them is not acceptable.`,
+        ].join("\n")
+      : [
+          `INSTRUCTION FOR THIS DOUBT TYPE: the user's expected fabric feel is required to resolve`,
+          `this doubt and is missing above. Respond with the needs_input state and ask one short,`,
+          `specific question about what they expect the fabric to feel or perform like — do not guess`,
+          `it and do not proceed to a verdict without it.`,
+        ].join("\n"),
+  ].join("\n")
+
+  return `${facts}\n\n${RESPONSE_SHAPE_INSTRUCTION}`
 }
 
-export function buildPrompt(item: WishlistItem, product: Product, user: User): string {
+function buildReturnsRiskPrompt(item: WishlistItem, product: Product, user: User): string {
+  const reviewLines = product.reviews.map((r) => `- "${r}"`).join("\n")
+
+  const brandOrders = user.order_history.filter((entry) => getProduct(entry.product_id)?.brand === product.brand)
+  const brandOrderLines = brandOrders.length
+    ? brandOrders
+        .map((entry) => {
+          const orderedProduct = getProduct(entry.product_id)
+          return `- "${orderedProduct?.name}" (${product.brand}), ordered in size ${entry.size_ordered}, outcome: ${entry.outcome}`
+        })
+        .join("\n")
+    : "(none — this user has no past orders from this brand)"
+
+  const facts = [
+    `DOUBT TYPE: returns_risk — if this item turns out to be wrong, how painful would returning it`,
+    `be, and how likely is that?`,
+    ``,
+    `PRODUCT FACTS:`,
+    `- Name: "${product.name}"`,
+    `- Brand: ${product.brand}`,
+    ``,
+    `PUBLIC REVIEWS MENTIONING FIT/EXCHANGE/RETURN EXPERIENCE FOR THIS PRODUCT:`,
+    reviewLines,
+    ``,
+    `THIS USER'S PAST ORDERS FROM ${product.brand} (kept vs returned):`,
+    brandOrderLines,
+    ``,
+    `INSTRUCTION FOR THIS DOUBT TYPE: judge how likely a return is and how painful it would be,`,
+    `based only on how often the reviews above describe needing an exchange/return, and this user's`,
+    `own past kept-vs-returned outcomes for this brand. In the "reasoning" field, cite the specific`,
+    `past order (if any) and quote or closely paraphrase the review line describing a return/exchange`,
+    `experience — a generic answer that doesn't cite them is not acceptable. If there are no past`,
+    `orders from this brand, say so plainly, rely on the review evidence alone, and reflect the`,
+    `weaker evidence in "confidence".`,
+  ].join("\n")
+
+  return `${facts}\n\n${RESPONSE_SHAPE_INSTRUCTION}`
+}
+
+type PromptBuilder = (item: WishlistItem, product: Product, user: User, answer?: string) => string
+
+const PROMPT_BUILDERS: Partial<Record<DoubtType, PromptBuilder>> = {
+  fit: buildFitPrompt,
+  quality: buildQualityPrompt,
+  returns_risk: buildReturnsRiskPrompt,
+}
+
+export function buildPrompt(item: WishlistItem, product: Product, user: User, answer?: string): string {
   const builder = PROMPT_BUILDERS[item.doubt_type]
   if (!builder) {
     throw new Error(`doubtResolution: no prompt builder registered yet for doubt_type "${item.doubt_type}"`)
   }
-  return builder(item, product, user)
+  return builder(item, product, user, answer)
 }
 
 export function parseDecideResponse(rawText: string): DecideResponse | null {
