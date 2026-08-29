@@ -1,3 +1,8 @@
+:root {
+  --accent: #a6192e;
+  --accent-dark: #841422;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -20,4 +25,18 @@ body {
   min-height: 100vh;
   background: #ffffff;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.06);
+}
+
+.app-header {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.app-header-sub {
+  font-weight: 400;
+  opacity: 0.85;
 }

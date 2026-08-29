@@ -11,7 +11,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <div className="app-shell">{children}</div>
+        <div className="app-shell">
+          <div className="app-header">
+            AJIO<span className="app-header-sub"> Decide</span>
+          </div>
+          {children}
+        </div>
       </body>
     </html>
   )

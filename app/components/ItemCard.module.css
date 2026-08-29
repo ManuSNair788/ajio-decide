@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 12px;
+  padding: 16px;
   border: 1px solid #e5e5e8;
   border-radius: 10px;
   flex-wrap: wrap;
@@ -41,14 +41,14 @@
   font-size: 13px;
   font-weight: 600;
   color: #ffffff;
-  background: #1a1a1a;
+  background: var(--accent);
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .button:hover {
-  background: #333333;
+  background: var(--accent-dark);
 }
 
 .button:disabled {

@@ -1,13 +1,14 @@
 .bucket {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .title {
   margin: 0;
   font-size: 15px;
   font-weight: 600;
+  color: var(--accent);
   display: flex;
   align-items: baseline;
   gap: 6px;
@@ -29,5 +30,5 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }

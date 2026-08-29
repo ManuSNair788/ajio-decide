@@ -5,6 +5,7 @@
 .heading {
   margin: 0;
   font-size: 20px;
+  color: var(--accent);
 }
 
 .subheading {
@@ -17,5 +18,5 @@
   padding: 0 16px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }

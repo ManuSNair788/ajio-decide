@@ -32,7 +32,7 @@
   font-size: 13px;
   font-weight: 600;
   color: #ffffff;
-  background: #1a1a1a;
+  background: var(--accent);
   border: none;
   border-radius: 6px;
   cursor: pointer;
