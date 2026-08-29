@@ -1,0 +1,126 @@
+[
+  {
+    "id": "w001",
+    "user_id": "user_1",
+    "product_id": "P001",
+    "doubt_type": "quality",
+    "expected_fabric_feel": "Expected a slightly heavier, more opaque cotton like a kurta I already own — hoping it's not too thin or see-through.",
+    "saved_at": "2026-06-02"
+  },
+  {
+    "id": "w002",
+    "user_id": "user_1",
+    "product_id": "P002",
+    "doubt_type": "fit",
+    "saved_at": "2026-06-05"
+  },
+  {
+    "id": "w003",
+    "user_id": "user_1",
+    "product_id": "P003",
+    "doubt_type": "fit",
+    "saved_at": "2026-06-10"
+  },
+  {
+    "id": "w004",
+    "user_id": "user_1",
+    "product_id": "P004",
+    "doubt_type": "returns_risk",
+    "saved_at": "2026-06-14"
+  },
+  {
+    "id": "w005",
+    "user_id": "user_1",
+    "product_id": "P005",
+    "doubt_type": "quality",
+    "expected_fabric_feel": "Wanted a rich, heavy silk drape like what I tried on in-store for a wedding, not a thin or slippery synthetic feel.",
+    "saved_at": "2026-06-20"
+  },
+  {
+    "id": "w006",
+    "user_id": "user_1",
+    "product_id": "P006",
+    "doubt_type": "fit",
+    "saved_at": "2026-06-25"
+  },
+  {
+    "id": "w007",
+    "user_id": "user_1",
+    "product_id": "P007",
+    "doubt_type": "returns_risk",
+    "saved_at": "2026-07-01"
+  },
+  {
+    "id": "w008",
+    "user_id": "user_1",
+    "product_id": "P008",
+    "doubt_type": "quality",
+    "expected_fabric_feel": "Expected a crisp, slightly structured cotton like my other formal shirts, not something soft and clingy.",
+    "saved_at": "2026-07-05"
+  },
+  {
+    "id": "w009",
+    "user_id": "user_1",
+    "product_id": "P009",
+    "doubt_type": "fit",
+    "saved_at": "2026-07-10"
+  },
+  {
+    "id": "w010",
+    "user_id": "user_1",
+    "product_id": "P010",
+    "doubt_type": "returns_risk",
+    "saved_at": "2026-07-14"
+  },
+  {
+    "id": "w011",
+    "user_id": "user_1",
+    "product_id": "P011",
+    "doubt_type": "returns_risk",
+    "saved_at": "2026-07-18"
+  },
+  {
+    "id": "w012",
+    "user_id": "user_1",
+    "product_id": "P012",
+    "doubt_type": "fit",
+    "saved_at": "2026-07-22"
+  },
+  {
+    "id": "w013",
+    "user_id": "user_1",
+    "product_id": "P013",
+    "doubt_type": "quality",
+    "expected_fabric_feel": "Wanted the same soft, breathable cotton feel as the co-ord set I already own from this brand, since I'm ordering a second colour.",
+    "saved_at": "2026-07-26"
+  },
+  {
+    "id": "w014",
+    "user_id": "user_1",
+    "product_id": "P014",
+    "doubt_type": "returns_risk",
+    "saved_at": "2026-08-01"
+  },
+  {
+    "id": "w015",
+    "user_id": "user_1",
+    "product_id": "P015",
+    "doubt_type": "quality",
+    "saved_at": "2026-08-10"
+  },
+  {
+    "id": "w016",
+    "user_id": "user_2",
+    "product_id": "P003",
+    "doubt_type": "fit",
+    "saved_at": "2026-08-18"
+  },
+  {
+    "id": "w017",
+    "user_id": "user_2",
+    "product_id": "P006",
+    "doubt_type": "quality",
+    "expected_fabric_feel": "Just want a soft, breathable cotton feel for everyday wear, nothing scratchy.",
+    "saved_at": "2026-08-22"
+  }
+]

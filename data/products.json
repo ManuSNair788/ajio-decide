@@ -1,0 +1,257 @@
+[
+  {
+    "id": "P001",
+    "name": "Floral Cotton Kurta",
+    "brand": "Anokhi Weaves",
+    "category": "kurta",
+    "size_range": ["XS", "S", "M", "L", "XL"],
+    "fabric": "cotton",
+    "formality": "casual",
+    "price": 899,
+    "reviews": [
+      "Fits exactly as expected, ordered my usual size.",
+      "Lovely cotton fabric, breathable for daily wear.",
+      "True to size, comfortable fit through the shoulders.",
+      "Color is slightly different from the picture but good quality."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P002",
+    "name": "Chikankari Anarkali Kurta",
+    "brand": "Vastra Studio",
+    "category": "kurta",
+    "size_range": ["S", "M", "L", "XL"],
+    "fabric": "georgette",
+    "formality": "festive",
+    "price": 1899,
+    "reviews": [
+      "Beautiful embroidery but runs small, order one size up.",
+      "Had to exchange for a bigger size, fit was snug.",
+      "Gorgeous for festive occasions, just size up from your usual.",
+      "Fabric quality is great, sizing is definitely on the smaller side."
+    ],
+    "brand_fit_signal": "runs_small"
+  },
+  {
+    "id": "P003",
+    "name": "Bodycon Midi Dress",
+    "brand": "Urban Threads",
+    "category": "dress",
+    "size_range": ["XS", "S", "M", "L"],
+    "fabric": "polyester",
+    "formality": "casual",
+    "price": 1299,
+    "reviews": [
+      "Very fitted, would recommend sizing up for comfort.",
+      "Stretchy fabric but still runs small around the waist.",
+      "Flattering silhouette once I exchanged for a larger size.",
+      "Good quality polyester, just size up."
+    ],
+    "brand_fit_signal": "runs_small"
+  },
+  {
+    "id": "P004",
+    "name": "Straight Fit Jeans",
+    "brand": "CasualEdge",
+    "category": "jeans",
+    "size_range": ["28", "30", "32", "34", "36"],
+    "fabric": "denim",
+    "formality": "casual",
+    "price": 1599,
+    "reviews": [
+      "True to size, fits like my usual jeans size.",
+      "Good quality denim, holds shape well after washing.",
+      "Ordered my regular size and it fit perfectly.",
+      "Comfortable straight fit, true to the size chart."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P005",
+    "name": "Silk Blend Saree",
+    "brand": "Noor Ethnic",
+    "category": "saree",
+    "size_range": ["Free Size"],
+    "fabric": "silk blend",
+    "formality": "festive",
+    "price": 2499,
+    "reviews": [
+      "Beautiful drape, perfect for festive occasions.",
+      "Rich fabric and color, exactly as shown online.",
+      "Great quality silk blend for the price.",
+      "Elegant saree, received many compliments at the wedding I wore it to."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P006",
+    "name": "Oversized Graphic Tee",
+    "brand": "StreetStitch",
+    "category": "top",
+    "size_range": ["S", "M", "L", "XL"],
+    "fabric": "cotton",
+    "formality": "casual",
+    "price": 599,
+    "reviews": [
+      "Very oversized, ordered a size down and it worked out.",
+      "Fabric is soft but the fit runs large, size down.",
+      "Great for a relaxed streetwear look, but definitely order smaller.",
+      "Print quality is good, just be aware it runs large."
+    ],
+    "brand_fit_signal": "runs_large"
+  },
+  {
+    "id": "P007",
+    "name": "Tailored Blazer",
+    "brand": "FormalFit Co",
+    "category": "blazer",
+    "size_range": ["S", "M", "L", "XL"],
+    "fabric": "polyester blend",
+    "formality": "workwear",
+    "price": 3199,
+    "reviews": [
+      "Sharp tailoring, fits true to size.",
+      "Great for office wear, structured shoulders and true to size.",
+      "Ordered my usual size and the fit was spot on.",
+      "Good quality fabric, holds its shape through the day."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P008",
+    "name": "Formal Button-Down Shirt",
+    "brand": "Meraki Label",
+    "category": "shirt",
+    "size_range": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "cotton",
+    "formality": "workwear",
+    "price": 1199,
+    "reviews": [
+      "Classic fit, true to size as expected.",
+      "Good quality cotton, doesn't wrinkle too easily.",
+      "Fits well for office wear, ordered my regular size.",
+      "True to size chart, comfortable through the shoulders."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P009",
+    "name": "Embroidered Lehenga Set",
+    "brand": "Desi Drape",
+    "category": "ethnic-set",
+    "size_range": ["S", "M", "L"],
+    "fabric": "net",
+    "formality": "festive",
+    "price": 4999,
+    "reviews": [
+      "Stunning embroidery but sizing runs small, exchange recommended.",
+      "Had to return for a bigger size, otherwise gorgeous outfit.",
+      "Perfect for a sangeet, just size up for comfort.",
+      "Heavy net fabric, beautiful finish, runs on the smaller side."
+    ],
+    "brand_fit_signal": "runs_small"
+  },
+  {
+    "id": "P010",
+    "name": "Printed Palazzo Pants",
+    "brand": "Chidiya Fashion",
+    "category": "palazzo",
+    "size_range": ["S", "M", "L", "XL"],
+    "fabric": "rayon",
+    "formality": "casual",
+    "price": 799,
+    "reviews": [
+      "Comfortable and true to size, great for daily wear.",
+      "Elastic waist fits well, ordered my usual size.",
+      "Good quality rayon, breathable and true to size.",
+      "Print is vibrant and fit is as expected."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P011",
+    "name": "Denim Jacket",
+    "brand": "Urban Threads",
+    "category": "jacket",
+    "size_range": ["S", "M", "L", "XL"],
+    "fabric": "denim",
+    "formality": "casual",
+    "price": 1999,
+    "reviews": [
+      "Runs small through the shoulders, size up recommended.",
+      "Had to exchange for a larger size, otherwise great quality.",
+      "Stylish jacket but definitely order a size bigger.",
+      "Good denim quality, just be mindful it runs small."
+    ],
+    "brand_fit_signal": "runs_small"
+  },
+  {
+    "id": "P012",
+    "name": "Wide Leg Jumpsuit",
+    "brand": "CasualEdge",
+    "category": "jumpsuit",
+    "size_range": ["XS", "S", "M", "L"],
+    "fabric": "linen blend",
+    "formality": "casual",
+    "price": 1799,
+    "reviews": [
+      "Runs large, ordered a size down and it fit perfectly.",
+      "Comfortable linen blend but sizing is generous, size down.",
+      "Great for summer, just order smaller than usual.",
+      "Loose fit even in my regular size, would size down next time."
+    ],
+    "brand_fit_signal": "runs_large"
+  },
+  {
+    "id": "P013",
+    "name": "Co-ord Kurta Set",
+    "brand": "Vastra Studio",
+    "category": "ethnic-set",
+    "size_range": ["S", "M", "L", "XL"],
+    "fabric": "cotton",
+    "formality": "casual",
+    "price": 1499,
+    "reviews": [
+      "True to size, comfortable cotton set for daily wear.",
+      "Fits as expected, good quality fabric.",
+      "Ordered my regular size and it was a perfect fit.",
+      "Comfortable and breathable, true to the size chart."
+    ],
+    "brand_fit_signal": "true_to_size"
+  },
+  {
+    "id": "P014",
+    "name": "Pencil Skirt",
+    "brand": "FormalFit Co",
+    "category": "skirt",
+    "size_range": ["XS", "S", "M", "L"],
+    "fabric": "polyester",
+    "formality": "workwear",
+    "price": 999,
+    "reviews": [
+      "Runs small at the waist, size up recommended.",
+      "Had to exchange for a bigger size for office wear.",
+      "Good quality but definitely order one size up.",
+      "Structured fit, just be aware it runs small."
+    ],
+    "brand_fit_signal": "runs_small"
+  },
+  {
+    "id": "P015",
+    "name": "Party Wear Gown",
+    "brand": "Noor Ethnic",
+    "category": "dress",
+    "size_range": ["S", "M", "L"],
+    "fabric": "satin",
+    "formality": "festive",
+    "price": 2799,
+    "reviews": [
+      "Gorgeous gown but runs small, size up for comfort.",
+      "Satin fabric feels premium, sizing is on the smaller side.",
+      "Had to exchange for a larger size, stunning once it fit.",
+      "Perfect for a festive party, just order bigger than usual."
+    ],
+    "brand_fit_signal": "runs_small"
+  }
+]

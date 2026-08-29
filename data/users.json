@@ -1,0 +1,21 @@
+[
+  {
+    "id": "user_1",
+    "name": "Priya Sharma",
+    "order_history": [
+      { "product_id": "P001", "size_ordered": "M", "outcome": "kept" },
+      { "product_id": "P004", "size_ordered": "32", "outcome": "kept" },
+      { "product_id": "P006", "size_ordered": "L", "outcome": "returned" },
+      { "product_id": "P008", "size_ordered": "M", "outcome": "kept" },
+      { "product_id": "P011", "size_ordered": "M", "outcome": "returned" },
+      { "product_id": "P013", "size_ordered": "M", "outcome": "kept" },
+      { "product_id": "P014", "size_ordered": "S", "outcome": "returned" },
+      { "product_id": "P010", "size_ordered": "M", "outcome": "kept" }
+    ]
+  },
+  {
+    "id": "user_2",
+    "name": "Ananya Rao",
+    "order_history": []
+  }
+]
