@@ -51,6 +51,11 @@
   background: #333333;
 }
 
+.button:disabled {
+  background: #999999;
+  cursor: default;
+}
+
 .stubNote {
   flex-basis: 100%;
   margin: 4px 0 0;

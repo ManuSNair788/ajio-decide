@@ -119,3 +119,7 @@ export function getUser(userId: string): User | undefined {
 export function getWishlistForUser(userId: string): WishlistItem[] {
   return wishlistItems.filter((w) => w.user_id === userId)
 }
+
+export function getWishlistItem(id: string): WishlistItem | undefined {
+  return wishlistItems.find((w) => w.id === id)
+}
